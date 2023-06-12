@@ -1,0 +1,88 @@
+body {
+    background-color: #f2f2f2;
+    height: 100%;
+}
+
+.title {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.menu {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #6b9ef6;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.close-button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.user-image {
+    margin-right: 15px;
+}
+
+.user-image img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 82.5vh;
+}
+
+.menu-section {
+    margin-top: 20px;
+}
+
+.menu-section .list-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+.closed {
+    margin-right: 15px;
+}
+
+/* Menú y footer */
+.body {
+    background-color: #f2f2f2;
+}
+.footer {
+    padding-top: 10px;
+    background-color: #e9e9ea;
+}
+.social-icon {
+    width: 24px;
+    height: 24px;
+}
+.img-fluid {
+    width: 24px;
+    height: 24px;
+}
+.row {
+    margin-right: 0;
+}
+.user-icon {
+    width: 24px;
+    height: 24px;
+}
