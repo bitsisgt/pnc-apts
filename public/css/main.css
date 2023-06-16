@@ -43,11 +43,17 @@ body {
     border-radius: 50%;
 }
 
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
 .main-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 82.5vh;
+    padding-bottom: 2.5rem;    /* Footer height */
+    margin-top: 1.5rem;
 }
 
 .menu-section {
@@ -63,18 +69,25 @@ body {
     margin-right: 15px;
 }
 
-/* Menú y footer */
-.body {
-    background-color: #f2f2f2;
-}
 .footer {
     padding-top: 10px;
     background-color: #e9e9ea;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
-.social-icon {
-    width: 24px;
-    height: 24px;
-}
+
+@media screen and (max-width: 600px) {
+    .footer {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+    }
+  }
+
 .img-fluid {
     width: 24px;
     height: 24px;
@@ -85,4 +98,12 @@ body {
 .user-icon {
     width: 24px;
     height: 24px;
+}
+
+.zoom-link {
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+}
+.zoom-link:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }

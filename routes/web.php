@@ -14,14 +14,11 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
-Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::get('/', [CustomAuthController::class, 'index'])->name('index');
+Route::get('login', [CustomAuthController::class, 'login'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
-Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('registration');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::get('forgot', [CustomAuthController::class, 'index'])->name('forgot');
 
