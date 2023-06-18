@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 
@@ -21,4 +22,8 @@ Route::get('registration', [CustomAuthController::class, 'registration'])->name(
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 Route::get('forgot', [CustomAuthController::class, 'index'])->name('forgot');
+Route::get('main', [CustomAuthController::class, 'main'])->name('main');
+
+Route::get('appointment', [AppointmentController::class, 'index'])->name('appointment');
+Route::get('appointment/admin', [AppointmentController::class, 'admin'])->name('admin.appointment');
 

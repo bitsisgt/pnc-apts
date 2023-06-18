@@ -46,4 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    function get_default_photo() {
+        return './img/usuario.png';
+    }
 }

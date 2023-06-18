@@ -39,7 +39,7 @@
             </div>
             <div class="form-group group-buttons d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary mt-3">Entrar al Sistema</button>
-                <button type="button" class="btn btn-secondary mt-3">Crear Nuevo Usuario</button>
+                <a href="{{ route('registration') }}" class="btn btn-secondary mt-3">Crear Nuevo Usuario</a>
             </div>
         </form>
         <hr class="border border-secondary border-3">

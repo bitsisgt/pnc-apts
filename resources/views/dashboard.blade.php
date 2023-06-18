@@ -28,13 +28,19 @@
         <div class="navbar-collapse justify-content-center"></div>
         @auth
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link text-dark" href="#" id="menuDropdown" role="button" aria-haspopup="true"
+            <div class="nav-item dropdown">
+                <a class="nav-link text-dark" href="#" data-toggle="dropdown" id="menuDropdown" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    Usuario
-                    <img src="./img/usuario.png" alt="Usuario" class="user-icon">
+                    {{ Auth::user()->email }}
+                    <img src="{{ Auth::user()->get_default_photo() }}" alt="Usuario" class="user-icon">
                 </a>
-            </li>
+                <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                    <a class="dropdown-item" href="#">Ver Perfil</a>
+                    <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ route('signout') }}">Cerrar Sesión</a>
+                  </div>
+            </div>
         </ul>
         @endauth
     </nav>

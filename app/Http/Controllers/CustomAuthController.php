@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session as FacadesSession;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,12 +11,39 @@ class CustomAuthController extends Controller
 {
     public function index()
     {
+        if (Auth::check()) {
+            return Redirect('main');
+        }
         return view('welcome');
     }
 
     public function login()
     {
+        if (Auth::check()) {
+            return Redirect('main');
+        }
         return view('login');
+    }
+
+    public function main()
+    {
+        return view('patients_dashboard');
+    }
+
+    public function registration()
+    {
+        if (Auth::check()) {
+            return Redirect('main');
+        }
+
+        return view('registration');
+    }
+
+    public function signOut() {
+        FacadesSession::flush();
+        Auth::logout();
+
+        return Redirect('login');
     }
 
 
@@ -45,49 +69,38 @@ class CustomAuthController extends Controller
         }
 
         if ($login) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('main')
                         ->withSuccess('Entrando correctamente');
         }
         return redirect("login")->withErrors(['login' =>'Las credenciales no coinciden, por favor intente de nuevo']);
     }
 
-
-
-    public function registration()
-    {
-        return view('registration');
-    }
-
-
     public function customRegistration(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'type' => 'required|in:SISPE,MINGOB,ACADEMIA,OTRO',
+            'nip' => 'nullable|unique:users',
+            'dpi' => 'required|min:12',
+            'email_address' => 'required|email',
+            'password' => 'required|min:5',
+            'repeat_password' => 'required|same:password',
         ]);
 
         $data = $request->all();
-        $check = $this->create($data);
+        $data['email'] = $data['email_address'];
+        $data['role'] = 'PUBLIC';
+        $data['name'] = array_key_exists('nip', $data) ? $data['nip'] : $data['dpi'];
+        $this->create($data);
 
-        return redirect("dashboard")->withSuccess('You have signed-in');
-    }
+        $credentials = ['email' => $data['email'], 'password' => $data['password']];
+        $login = Auth::attempt($credentials);
 
-
-    public function create(array $data)
-    {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password'])
-      ]);
-    }
-
-
-    public function signOut() {
-        FacadesSession::flush();
-        Auth::logout();
-
-        return Redirect('login');
+        if ($login) {
+            return redirect()->intended('main')
+                        ->withSuccess('Entrando correctamente');
+        } else {
+            return redirect()->intended('login')
+                        ->withError('Error de registro');
+        }
     }
 }
