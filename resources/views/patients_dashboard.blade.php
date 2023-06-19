@@ -29,9 +29,9 @@
                 <div class="card">
                     <img class="card-img-top p-4" src="{{ asset('img/doctor.png') }}" alt="perfil">
                     <div class="card-body">
-                      <h5 class="card-title">Perfil de Pacientes</h5>
+                      <h5 class="card-title"><a href="{{ route('admin.patient') }}">Perfil de Pacientes</a></h5>
                       <p class="card-text">Crea y actualiza los perfiles de los pacientes.</p>
-                      <a href="#" class="btn btn-primary btn-lg btn-block">Adminitrar Perfiles</a>
+                      <a href="{{ route('admin.patient') }}" class="btn btn-primary btn-lg btn-block">Adminitrar Perfiles</a>
                     </div>
                   </div>
                 <div class="card">

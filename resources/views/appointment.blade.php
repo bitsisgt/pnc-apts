@@ -2,6 +2,31 @@
 @section('title', 'Subdirección General De Salud Policial SISAP | Panel Principal de Pacientes | Servicio de Citas Médicas')
 
 @section('content')
+<!-- The Modal -->
+<div class="modal" id="erroModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Problemas con perfil</h4>
+          <button type="button" class="btn-close" data-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Parece que su usuario no posee ningún perfil de paciente. Es necesario que cree un perfil para agendar citas.
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 <div class="card" style="width: 1200px">
     <div class="card-header d-flex justify-content-between">
         <h5>Agendar Cita</h5>

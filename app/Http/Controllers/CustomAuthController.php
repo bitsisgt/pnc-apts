@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session as FacadesSession;
 use Illuminate\Support\Facades\Validator;
 
@@ -80,6 +82,7 @@ class CustomAuthController extends Controller
         $request->validate([
             'type' => 'required|in:SISPE,MINGOB,ACADEMIA,OTRO',
             'nip' => 'nullable|unique:users',
+            'name' => 'required',
             'dpi' => 'required|min:12',
             'email_address' => 'required|email',
             'password' => 'required|min:5',
@@ -89,7 +92,8 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $data['email'] = $data['email_address'];
         $data['role'] = 'PUBLIC';
-        $data['name'] = array_key_exists('nip', $data) ? $data['nip'] : $data['dpi'];
+
+        #$data['name'] = array_key_exists('nip', $data) ? $data['nip'] : $data['dpi'];
         $this->create($data);
 
         $credentials = ['email' => $data['email'], 'password' => $data['password']];
@@ -102,5 +106,20 @@ class CustomAuthController extends Controller
             return redirect()->intended('login')
                         ->withError('Error de registro');
         }
+    }
+
+    public function create(array $data)
+    {
+      return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'name' => $data['name'],
+        'dpi' => $data['dpi'],
+        'type' => $data['type'],
+        'nip' => array_key_exists('nip', $data) ? $data['nip'] : null,
+        'role' => $data['role'],
+        'phone' => $data['phone'],
+        'password' => Hash::make($data['password'])
+      ]);
     }
 }

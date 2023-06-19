@@ -69,11 +69,27 @@ body {
     margin-right: 15px;
 }
 
+#success-alert {
+    position: fixed;
+    top: 5.5rem;
+    right: 0;
+    z-index: 99999;
+}
+
+
+#danger-alert {
+    position: fixed;
+    top: 5.5rem;
+    right: 0;
+    z-index: 99999;
+}
+
 .footer {
     padding-top: 10px;
     background-color: #e9e9ea;
-    position: absolute;
     bottom: 0;
+    position: absolute;
+    margin-top: 30px;
     width: 100%;
 }
 

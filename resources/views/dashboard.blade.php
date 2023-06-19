@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <title>@yield('title')</title>
@@ -22,7 +22,7 @@
     <div class="page-container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="text-decoration-none d-inline-flex align-items-center" href="{{ route('index') }}">
-            <img src="./img/logomingob.jpg" height="60" class="mr-2" alt="Logo ministerio de gobernación">
+            <img src="/img/logomingob.jpg" height="60" class="mr-2" alt="Logo ministerio de gobernación">
             <h1 class="h3">Subdirección General De Salud Policial SISAP</h1>
         </a>
         <div class="navbar-collapse justify-content-center"></div>
@@ -45,6 +45,16 @@
         @endauth
     </nav>
     <div class="main-container container mt-4">
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" id="success-alert" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" id="danger-alert" role="alert">
+            {{ session('error') }}
+        </div>
+        @endif
         @yield('content')
     </div>
 
@@ -87,13 +97,19 @@
         </div>
     </footer>
 </div>
-    @yield('js')
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script> -->
+    <script>
+        setTimeout(() => {
+            $('#success-alert').hide();
+            $('#danger-alert').hide();
+        }, 5000);
+    </script>
+    @yield('js')
 </body>
 
 </html>

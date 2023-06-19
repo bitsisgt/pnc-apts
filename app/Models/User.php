@@ -48,6 +48,6 @@ class User extends Authenticatable
     ];
 
     function get_default_photo() {
-        return './img/usuario.png';
+        return '/img/usuario.png';
     }
 }

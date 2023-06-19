@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,11 @@ Route::get('main', [CustomAuthController::class, 'main'])->name('main');
 
 Route::get('appointment', [AppointmentController::class, 'index'])->name('appointment');
 Route::get('appointment/admin', [AppointmentController::class, 'admin'])->name('admin.appointment');
+
+Route::get('patient', [ProfileController::class, 'patient_admin'])->name('admin.patient');
+Route::get('patient/profile/{id?}', [ProfileController::class, 'patient_profile'])->name('profile.patient');
+Route::get('patient/user', [ProfileController::class, 'user_patient_profile'])->name('user.patient');
+Route::post('patient/profile', [ProfileController::class, 'save'])->name('profile.save');
+Route::post('patient/update', [ProfileController::class, 'update'])->name('profile.update');
+
 
