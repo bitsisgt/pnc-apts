@@ -10,6 +10,7 @@ use App\Models\Patient;
 use App\Models\Speciality;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AppointmentController extends Controller
 {
@@ -105,7 +106,10 @@ class AppointmentController extends Controller
             'end_date' => $end_date,
             'day_of_week' => $start_date->dayOfWeekIso
         ]);
-        return redirect()->intended('main')->withSuccess('Cita reservada');
+        // Obtener el ID de la cita recién creada
+        $appointmentId = Appointment::latest('id')->first()->id;
+
+        return Redirect::route('appointment.show', ['id' => $appointmentId]);
     }
 
     public function admin(Request $request)
@@ -122,7 +126,7 @@ class AppointmentController extends Controller
         $appointment = Appointment::find($id);
         $patientName = $appointment->patient->name; // Suponiendo que la relación se llama "patient" y el campo "name" representa el nombre del paciente
         $startDateTime = Carbon::createFromFormat('Y-m-d H:i:s', $appointment->start_date); // Convertir la fecha y hora en un objeto Carbon
-    
+
         return view('appointment.show', [
             'appointment' => $appointment,
             'patientName' => $patientName,

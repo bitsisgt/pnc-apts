@@ -2,7 +2,7 @@
 @section('title', 'Subdirección General De Salud Policial SISAP | Perfil de Paciente | Servicio de Citas Médicas')
 @section('css')
 <link rel="stylesheet" href="{{ asset('/css/bootstrap-datepicker.min.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">v
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ asset('/css/confirmation.css') }}">
 @endsection
 
@@ -22,7 +22,7 @@
         <label>Nombre del paciente:</label>
         <h4> {{ $patientName }}</h4>
         <p>Fecha: {{ $startDateTime->format('d/m/Y') }}</p>
-        <p>Hora: {{ $startDateTime->format('H:i') }}</p>
+        <p>Hora Inicio: {{ $startDateTime->format('H:i') }}</p>
 
     </div>
 
@@ -41,7 +41,7 @@
             <button class="btn btn-primary btn-block" id="agendarBtn">Imprimir</button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-danger btn-block" id="cancelarBtn">Regresar</button>
+            <a href="{{ route('main') }}" class="btn btn-danger btn-block" id="cancelarBtn">Regresar</a>
         </div>
     </div>
 </div>
