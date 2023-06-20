@@ -30,6 +30,7 @@ Route::post('appointment/calendar', [AppointmentController::class, 'index'])->na
 Route::get('appointment/admin', [AppointmentController::class, 'admin'])->name('admin.appointment');
 Route::post('appointment/reserve', [AppointmentController::class, 'reserve'])->name('reserve.appointment');
 Route::post('appointment/availabilities', [AppointmentController::class, 'available_hours'])->name('appointment.availabilities');
+Route::get('/citas/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
 
 Route::get('patient', [ProfileController::class, 'patient_admin'])->name('admin.patient');
 Route::get('patient/profile/{id?}', [ProfileController::class, 'patient_profile'])->name('profile.patient');

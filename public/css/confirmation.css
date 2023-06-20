@@ -1,0 +1,20 @@
+
+.container-conf {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 7px 10px 7px 1px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    max-width: 400px;
+    margin: 155px auto;
+}
+.form-group {
+    text-align: left;
+}
+.form-group label {
+    font-weight: bold;
+}
+.img-medium {
+    width: 100px;
+    height: 100px;
+}

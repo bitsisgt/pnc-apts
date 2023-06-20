@@ -63,7 +63,8 @@ class AppointmentController extends Controller
         return view('appointment', $data);
     }
 
-    public function available_hours(Request $request) {
+    public function available_hours(Request $request)
+    {
         $doctor_id = $request->input('doctor_id');
         $speciality_id = $request->input('speciality_id');
         $hospital_id = $request->input('hospital_id');
@@ -72,12 +73,12 @@ class AppointmentController extends Controller
         $availabilities = Availability::where('hospital_id', $hospital_id)->where('doctor_id', $doctor_id)->where('speciality_id', $speciality_id)->where('day_of_week', $date->dayOfWeekIso)->get();
         $appointments = Appointment::where('hospital_id', $hospital_id)->where('doctor_id', $doctor_id)->where('speciality_id', $speciality_id)->whereBetween('start_date', [$date->format('Y-m-d ') . ' 00:00:00', $date->format('Y-m-d ') . ' 23:59:59'])->where('status', 'ACTIVA')->get();
         $filtered = $availabilities->filter(function ($a) use ($appointments) {
-            foreach($appointments as $appointement) {
+            foreach ($appointments as $appointement) {
                 $start = Carbon::createFromTime(intval($a->start_hour), 0, 0, 'America/Guatemala');
                 $end = Carbon::createFromTime(intval($a->end_hour), 0, 0, 'America/Guatemala');
-                $carbon = Carbon::createFromFormat('Y-m-d H:i:s',$appointement->start_date, 'America/Guatemala');
+                $carbon = Carbon::createFromFormat('Y-m-d H:i:s', $appointement->start_date, 'America/Guatemala');
                 $target = Carbon::createFromFormat('H:i:s', $carbon->format('H:i:s'), 'America/Guatemala');
-                if($target >= $start && $target <= $end) {
+                if ($target >= $start && $target <= $end) {
                     return false;
                 }
             }
@@ -92,8 +93,8 @@ class AppointmentController extends Controller
         $patient_id = $request->input('patient_ap');
         $availability = Availability::find($av_id);
         $date = $request->input('date_a');
-        $start_date = Carbon::createFromFormat('Y-m-d H:i:s', $date.' '.intval($availability->start_hour).':00:00', 'America/Guatemala');
-        $end_date = Carbon::createFromFormat('Y-m-d H:i:s', $date.' '.intval($availability->end_hour).':00:00', 'America/Guatemala');
+        $start_date = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . intval($availability->start_hour) . ':00:00', 'America/Guatemala');
+        $end_date = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . intval($availability->end_hour) . ':00:00', 'America/Guatemala');
         Appointment::create([
             'patient_id' => $patient_id,
             'doctor_id' => $availability->doctor_id,
@@ -103,15 +104,29 @@ class AppointmentController extends Controller
             'start_date' => $start_date,
             'end_date' => $end_date,
             'day_of_week' => $start_date->dayOfWeekIso
-          ]);
+        ]);
         return redirect()->intended('main')->withSuccess('Cita reservada');
     }
 
     public function admin(Request $request)
     {
-        $appointments = Appointment::whereHas('Patient', function($p) use ($request) {
+        $appointments = Appointment::whereHas('Patient', function ($p) use ($request) {
             $p->user_id = $request->user()->id;
         })->orderBy('start_date', 'desc')->get();
         return view('admin_appointments', ['appointments' => $appointments]);
+    }
+
+    public function show($id)
+    {
+
+        $appointment = Appointment::find($id);
+        $patientName = $appointment->patient->name; // Suponiendo que la relación se llama "patient" y el campo "name" representa el nombre del paciente
+        $startDateTime = Carbon::createFromFormat('Y-m-d H:i:s', $appointment->start_date); // Convertir la fecha y hora en un objeto Carbon
+    
+        return view('appointment.show', [
+            'appointment' => $appointment,
+            'patientName' => $patientName,
+            'startDateTime' => $startDateTime
+        ]);
     }
 }
