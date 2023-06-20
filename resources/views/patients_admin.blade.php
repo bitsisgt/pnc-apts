@@ -31,6 +31,7 @@
                         <td>{{ $patient->medical_number }}</td>
                         <td>
                             <a href="{{ route('profile.patient', $patient->id) }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ route('patient.show', $patient->id) }}" class="btn btn-success"><i class="fa fa-id-card"></i></a>
                         </td>
                     </tr>
                     @endforeach
