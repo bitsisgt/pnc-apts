@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +15,7 @@ class CustomAuthController extends Controller
     public function index()
     {
         if (Auth::check()) {
+
             return Redirect('main');
         }
         return view('welcome');
@@ -27,9 +29,12 @@ class CustomAuthController extends Controller
         return view('login');
     }
 
-    public function main()
+    public function main(Request $request)
     {
-        return view('patients_dashboard');
+        $data = Patient::where('user_id', $request->user()->id)->get();
+        $patientId = $data->first()->id;
+
+        return view('patients_dashboard', ['patientId' => $patientId]);
     }
 
     public function registration()
@@ -41,7 +46,8 @@ class CustomAuthController extends Controller
         return view('registration');
     }
 
-    public function signOut() {
+    public function signOut()
+    {
         FacadesSession::flush();
         Auth::logout();
 
@@ -73,7 +79,7 @@ class CustomAuthController extends Controller
         if ($login) {
             return redirect()->intended('main');
         }
-        return redirect("login")->withErrors(['login' =>'Las credenciales no coinciden, por favor intente de nuevo']);
+        return redirect("login")->withErrors(['login' => 'Las credenciales no coinciden, por favor intente de nuevo']);
     }
 
     public function customRegistration(Request $request)
@@ -100,25 +106,25 @@ class CustomAuthController extends Controller
 
         if ($login) {
             return redirect()->intended('main')
-                        ->withSuccess('Entrando correctamente');
+                ->withSuccess('Entrando correctamente');
         } else {
             return redirect()->intended('login')
-                        ->withError('Error de registro');
+                ->withError('Error de registro');
         }
     }
 
     public function create(array $data)
     {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'name' => $data['name'],
-        'dpi' => $data['dpi'],
-        'type' => $data['type'],
-        'nip' => array_key_exists('nip', $data) ? $data['nip'] : null,
-        'role' => $data['role'],
-        'phone' => $data['phone'],
-        'password' => Hash::make($data['password'])
-      ]);
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'name' => $data['name'],
+            'dpi' => $data['dpi'],
+            'type' => $data['type'],
+            'nip' => array_key_exists('nip', $data) ? $data['nip'] : null,
+            'role' => $data['role'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password'])
+        ]);
     }
 }

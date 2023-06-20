@@ -118,7 +118,7 @@ class AppointmentController extends Controller
             return Redirect::route('appointment.show', ['id' => $appointmentId]);
         } else {
 
-            return redirect()->intended('main')->withErrors(['error' => 'No se encontró la cita.']);
+            return redirect()->intended('main')->withErrors('No se encontró la cita.');
         }
     }
 
@@ -132,18 +132,34 @@ class AppointmentController extends Controller
 
     public function show($id)
     {
-
         $appointment = Appointment::find($id);
         if (!$appointment) {
-            return redirect()->intended('main')->withErrors(['error' => 'No se encontró la cita.']);
+            return redirect()->intended('main')->withErrors('No se encontró la cita.');
         }
         $patientName = $appointment->patient->name;
+        $patientId = $appointment->patient->id;
         $startDateTime = Carbon::createFromFormat('Y-m-d H:i:s', $appointment->start_date);
 
         return view('appointment.show', [
             'appointment' => $appointment,
             'patientName' => $patientName,
+            'patientId' => $patientId,
             'startDateTime' => $startDateTime
+        ]);
+    }
+
+    public function showPatient($id)
+    {
+        $patient = Patient::find($id);
+
+        if (!$patient) {
+            return redirect()->intended('main')->withErrors('No se encontró al paciente.');
+        }
+
+        $profile = $patient->profile;
+        return view('appointment.show_patient', [
+            'patient' => $patient,
+            'profile' => $profile
         ]);
     }
 }

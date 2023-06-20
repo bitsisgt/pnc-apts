@@ -37,13 +37,15 @@
                 <div class="card">
                   <img class="card-img-top p-4" src="{{ asset('img/printer.png') }}" alt="printer">
                   <div class="card-body">
-                    <h5 class="card-title">Carnet Médico</h5>
+                    <h5 class="card-title"><a href="{{ route('patient.show', $patientId) }}" >Carnet Médico </a></h5>
                     <p class="card-text">Consulta e imprime tu carnet médico.</p>
-                    <a href="#" class="btn btn-primary btn-lg btn-block">Imprimir Carnet</a>
+                    <a href="{{ route('patient.show', $patientId) }}"   class="btn btn-primary btn-lg btn-block">Imprimir Carnet</a>
                   </div>
                 </div>
               </div>
           </div>
     </div>
   </div>
+
+
 @endsection

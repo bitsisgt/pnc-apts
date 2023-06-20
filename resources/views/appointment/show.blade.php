@@ -38,7 +38,7 @@
     <!-- Botones de Agendar y Cancelar -->
     <div class="row mt-3">
         <div class="col-md-6">
-            <button class="btn btn-primary btn-block" id="agendarBtn">Imprimir</button>
+            <a href="{{ route('patient.show', $patientId) }}" class="btn btn-primary btn-block" id="agendarBtn">Imprimir</a>
         </div>
         <div class="col-md-6">
             <a href="{{ route('main') }}" class="btn btn-danger btn-block" id="cancelarBtn">Regresar</a>
