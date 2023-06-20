@@ -10,7 +10,7 @@ class Doctor extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'specialities';
+    protected $table = 'doctors';
 
     /**
      * The attributes that are mass assignable.

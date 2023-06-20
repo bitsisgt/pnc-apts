@@ -26,6 +26,7 @@ Route::get('forgot', [CustomAuthController::class, 'index'])->name('forgot');
 Route::get('main', [CustomAuthController::class, 'main'])->name('main');
 
 Route::get('appointment', [AppointmentController::class, 'index'])->name('appointment');
+Route::post('appointment/calendar', [AppointmentController::class, 'index'])->name('appointment.calendar');
 Route::get('appointment/admin', [AppointmentController::class, 'admin'])->name('admin.appointment');
 
 Route::get('patient', [ProfileController::class, 'patient_admin'])->name('admin.patient');

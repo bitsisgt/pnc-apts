@@ -71,8 +71,7 @@ class CustomAuthController extends Controller
         }
 
         if ($login) {
-            return redirect()->intended('main')
-                        ->withSuccess('Entrando correctamente');
+            return redirect()->intended('main');
         }
         return redirect("login")->withErrors(['login' =>'Las credenciales no coinciden, por favor intente de nuevo']);
     }
