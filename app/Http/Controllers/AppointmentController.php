@@ -106,10 +106,20 @@ class AppointmentController extends Controller
             'end_date' => $end_date,
             'day_of_week' => $start_date->dayOfWeekIso
         ]);
-        // Obtener el ID de la cita recién creada
-        $appointmentId = Appointment::latest('id')->first()->id;
 
-        return Redirect::route('appointment.show', ['id' => $appointmentId]);
+        $appointment = Appointment::where('patient_id', $patient_id)
+            ->latest('id')
+            ->first();
+
+        if ($appointment) {
+            $appointmentId = $appointment->id;
+
+
+            return Redirect::route('appointment.show', ['id' => $appointmentId]);
+        } else {
+
+            return redirect()->intended('main')->withErrors(['error' => 'No se encontró la cita.']);
+        }
     }
 
     public function admin(Request $request)
@@ -124,8 +134,11 @@ class AppointmentController extends Controller
     {
 
         $appointment = Appointment::find($id);
-        $patientName = $appointment->patient->name; // Suponiendo que la relación se llama "patient" y el campo "name" representa el nombre del paciente
-        $startDateTime = Carbon::createFromFormat('Y-m-d H:i:s', $appointment->start_date); // Convertir la fecha y hora en un objeto Carbon
+        if (!$appointment) {
+            return redirect()->intended('main')->withErrors(['error' => 'No se encontró la cita.']);
+        }
+        $patientName = $appointment->patient->name;
+        $startDateTime = Carbon::createFromFormat('Y-m-d H:i:s', $appointment->start_date);
 
         return view('appointment.show', [
             'appointment' => $appointment,
