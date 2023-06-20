@@ -28,6 +28,8 @@ Route::get('main', [CustomAuthController::class, 'main'])->name('main');
 Route::get('appointment', [AppointmentController::class, 'index'])->name('appointment');
 Route::post('appointment/calendar', [AppointmentController::class, 'index'])->name('appointment.calendar');
 Route::get('appointment/admin', [AppointmentController::class, 'admin'])->name('admin.appointment');
+Route::post('appointment/reserve', [AppointmentController::class, 'reserve'])->name('reserve.appointment');
+Route::post('appointment/availabilities', [AppointmentController::class, 'available_hours'])->name('appointment.availabilities');
 
 Route::get('patient', [ProfileController::class, 'patient_admin'])->name('admin.patient');
 Route::get('patient/profile/{id?}', [ProfileController::class, 'patient_profile'])->name('profile.patient');
