@@ -32,7 +32,7 @@ class CustomAuthController extends Controller
     public function main(Request $request)
     {
         $data = Patient::where('user_id', $request->user()->id)->get();
-        $patientId = $data->first()->id;
+        $patientId = $data->first()->id ?? 0;
 
         return view('patients_dashboard', ['patientId' => $patientId]);
     }
