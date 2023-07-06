@@ -21,6 +21,7 @@ class Doctor extends Model
         'name',
         'profile_id',
         'user_id',
+        // 'speciality_id',
     ];
 
      /**
