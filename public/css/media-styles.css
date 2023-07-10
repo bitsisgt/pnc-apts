@@ -1,0 +1,102 @@
+/* Media Queries patients-dashboard */
+
+/* Estilos generales para dispositivos móviles */
+@media (max-width: 767px) {
+    .card {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .card-header {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .card-header > h5,
+    .card-header > a {
+      flex-basis: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .card-group {
+      display: block;
+    }
+  
+    .card-deck {
+      display: block;
+    }
+  
+    .card-img-top {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .card-body {
+      text-align: center;
+    }
+  
+    .card-body > h5,
+    .card-body > p,
+    .card-body > a {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  
+    .card-body > h5 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  
+    .card-body > p {
+      margin-bottom: 15px;
+    }
+  
+    .btn-block {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  
+  /* Estilos para tablets */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .card {
+      width: 50%;
+    }
+  
+    .card-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .card-deck {
+      width: 100%;
+    }
+
+    .card-img-top {
+        width: 200px;
+        height: 200px;
+    }
+  }
+  
+  /* Estilos para tablets en modo apaisado y dispositivos de pantalla grande */
+  @media (min-width: 992px) {
+    .card {
+      width: 33.33%;
+    }
+  
+    .card-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .card-deck {
+      width: 100%;
+    }
+
+  }
+  

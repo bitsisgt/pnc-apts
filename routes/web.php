@@ -14,6 +14,8 @@ use App\Http\Controllers\AppointmentManagementController;
 use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\AppointmentHistoryController;
 
+use App\Http\Controllers\UserViewController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,9 @@ Route::get('maintenance/users', [UsersController::class, 'maintenance_users'])->
 Route::get('maintenance/doctors', [DoctorsController::class, 'maintenance_doctors'])->name('maintenance.doctors');
 Route::get('maintenance/hospitals', [HospitalsController::class, 'maintenance_hospitals'])->name('maintenance.hospitals');
 Route::get('maintenance/specialities', [SpecialitiesController::class, 'maintenance_specialities'])->name('maintenance.specialities');
+
+
+Route::get('user-view', [UserViewController::class, 'user_view'])->name('user_view');
 
 // Auth::routes();
 

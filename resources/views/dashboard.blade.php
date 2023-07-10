@@ -20,10 +20,12 @@
 
 <body>
     <div class="page-container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-menu">
         <a class="text-decoration-none d-inline-flex align-items-center" href="{{ route('index') }}">
-            <img src="/img/logomingob.jpg" height="60" class="mr-2" alt="Logo ministerio de gobernación">
-            <h1 class="h3">Subdirección General De Salud Policial SISAP</h1>
+            <div class="logo-title-container">
+                <img class="logo-sishospi" src="/img/logo-round.png" height="60" class="mr-2" alt="Logo ministerio de gobernación">
+                <h1 class="h3"> SISTEMA DE CONTROL HOSPITALARIO SISHOSPI</h1>
+            </div>
         </a>
         <div class="navbar-collapse justify-content-center"></div>
         @auth
@@ -44,7 +46,7 @@
         </ul>
         @endauth
     </nav>
-    <div class="main-container container mt-4">
+    <div class="main-container container">
         @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" id="success-alert" role="alert">
             {{ session('success') }}
@@ -58,7 +60,8 @@
         @yield('content')
     </div>
 
-    <footer class="footer bg-dark text-white btn-outline-light .form-white">
+    <!-- <footer class="footer text-white btn-outline-light .form-white"> -->
+    <footer class="footer text-white .form-white">
         <div class="footer-container">
             <div class="row text-center d-flex justify-content-center">
                 <div class="col-md-2">
@@ -96,7 +99,16 @@
             </div>
         </div>
     </footer>
-</div>
+    </div>
+
+    <div id="preloader" class="showbox">
+            <div id="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterLimit="10" />
+                </svg>
+            </div>
+        </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -108,6 +120,28 @@
             $('#success-alert').hide();
             $('#danger-alert').hide();
         }, 5000);
+    </script>
+    <script>
+        window.addEventListener('scroll', () => {
+            let headerScroll = document.querySelector('.navbar-menu');
+            headerScroll.classList.toggle('header-sticky', window.scrollY > 0);
+        }); 
+    </script>
+    <script>
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     var loader = document.querySelector(".showbox");
+        //     loader.style.display = "none";
+        // });
+        // Ocultar el preloader después de 3 segundos (3000 ms)
+        document.addEventListener("DOMContentLoaded", function() {
+            var preloader = document.getElementById("preloader");
+            preloader.classList.add("hidebox");
+
+            // Eliminar el preloader del DOM después de la transición
+            setTimeout(function() {
+                preloader.parentNode.removeChild(preloader);
+            }, 500); // Tiempo de transición (0.5 segundos) + retardo adicional (0.5 segundos)
+        });
     </script>
     @yield('js')
 </body>

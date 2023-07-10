@@ -1,7 +1,106 @@
-body {
+/* body {
     background-color: #f2f2f2;
     height: 100%;
+} */
+
+body{
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	/* font-size:12px; */
+    background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
+	-webkit-animation: 10s linear 0s normal none infinite animate;
+	-moz-animation: 10s linear 0s normal none infinite animate;
+	-ms-animation: 10s linear 0s normal none infinite animate;
+	-o-animation: 10s linear 0s normal none infinite animate;
+	animation: 10s linear 0s normal none infinite animate;
+
 }
+
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+    height: 5px;
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+
+body::-webkit-scrollbar-thumb
+{
+
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #D62929;
+}
+
+.navbar-menu {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #fefefe;
+    transition: 0.6s;
+    z-index: 3;
+}
+
+.logo-title-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.header-sticky {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    /* margin-bottom: 20px; */
+    z-index: 3;
+    backdrop-filter: blur(8px);
+    background-color: #fefefec6;
+    box-shadow: 0px 0px 10px rgba(22, 23, 24, 0.787);
+    transition: 0.6s;
+
+}
+
+.dropdown-menu {
+    backdrop-filter: blur(8px);
+    background-color: #fefefec6;
+}
+
+/* .dropdown-item:hover {
+    background-color: #ffffff9c;    
+} */
 
 .title {
     text-align: left;
@@ -33,6 +132,10 @@ body {
     border-radius: 4px;
 }
 
+.logo-sishospi {
+    width: auto;
+}
+
 .user-image {
     margin-right: 15px;
 }
@@ -53,8 +156,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 2.5rem;    /* Footer height */
-    margin-top: 1.5rem;
+    padding-bottom: 7.5rem;    /* Footer height */
+    margin-top: 6.5rem;
 }
 
 .menu-section {
@@ -87,21 +190,101 @@ body {
 
 .footer {
     padding-top: 10px;
-    background-color: #e9e9ea;
-    bottom: 0;
-    position: absolute;
-    margin-top: 30px;
+    /* background-color: #1d2023d6!important; */
+    /* position: absolute; */
+    /* bottom: 0; */
+    margin-top: 60px;
+    margin-bottom: 30px;
     width: 100%;
 }
 
-@media screen and (max-width: 600px) {
-    .footer {
-      visibility: hidden;
-      clear: both;
-      float: left;
-      margin: 10px auto 5px 20px;
-      width: 28%;
-      display: none;
+/* Preloader */
+
+.showbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5%;
+    background-color: #073064;
+    z-index: 5;
+    transition: opacity 0.5s ease-out;
+            opacity: 1;
+  }
+  .hidebox {
+    opacity: 0; 
+  }
+  
+  #loader {
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+  }
+  
+  #loader::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  
+  .circular {
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+    }
+    100% {
+      stroke-dasharray: 899, 200;
+      stroke-dashoffset: -124px;
+    }
+  }
+  
+  @keyframes color {
+    100% {
+    }
+    0% {
+      stroke: rgb(255, 0, 0);
+    }
+    50% {
+      stroke: rgb(0, 145, 255);
+    }
+    60% {
+    }
+    80% {
+      stroke: rgb(255, 255, 0);
     }
   }
 
@@ -123,4 +306,85 @@ body {
 }
 .zoom-link:hover {
     transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+/* Media Queries */
+
+
+@media screen and (max-width: 600px) {
+    .footer {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+    }
+  }
+
+ /* Estilos para dispositivos móviles */
+ @media only screen and (max-width: 767px) {
+    
+    img {
+
+        height: auto;
+    }
+
+    .logo-sishospi {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .logo-title-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        padding-bottom: 8px;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .navbar-collapse {
+        justify-content: flex-start;
+    }
+
+    .navbar-nav {
+        margin-left: 0;
+    }
+
+    .nav-link {
+        padding: 5px;
+    }
+
+    .user-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+/* Estilos para tablets */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .logo-sishospi {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
 }

@@ -9,6 +9,9 @@
 @section('content')
 <div class="column">
     <div class="container-cnt">
+            <div style="text-align: right">
+                <a href="{{ route('main') }}">Regresar</a>
+            </div>
         <div class="container">
             <h1 class="center">Carné</h1>
             <div class="code-div">
@@ -19,6 +22,7 @@
                     <p><strong>Nombre:</strong>  {{ $patient->name }}</p>
                     <p><strong>Dirección:</strong> {{ $profile->address }}</p>
                     <p><strong>DPI:</strong> {{ $profile->dpi }}</p>
+                    <p><strong>Número Expediente Médico:</strong> {{ $patient->medical_number }}</p>
                     <p><strong>Género:</strong> {{ $profile->gender }}</p>
                     <p><strong>Fecha de nacimieto:</strong> {{ $profile->birth_date }}</p>
                 </div>
@@ -34,7 +38,11 @@
     <div class="container-cnt">
         <div class="row justify-content-md-center">
             <div class="col-lg-6 button-container">
-                <a href="{{ route('main') }}"  class="btn btn-primary btn-block">Imprimir</a>
+                <a href="{{ route('main') }}"  class="btn btn-primary btn-block mb-3">Generar QR</a>
+                <br>
+                <img class="image-qr" src="{{ asset('img/codigo-qr.png') }}" alt="Código QR">
+                <br>
+                <p>Escanéa el carnet</p>
             </div>
            
         </div>
