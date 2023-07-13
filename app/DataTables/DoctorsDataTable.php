@@ -47,7 +47,7 @@ class DoctorsDataTable extends DataTable
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
-                        Button::make('add')->text('Nuevo'),
+                        Button::make('add')->text('Nuevo')->action('window.location.href = "'.route('doctor.form').'";'),
                         Button::make('excel'),
                         Button::make('csv'),
                         Button::make('pdf'),

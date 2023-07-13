@@ -5,6 +5,7 @@
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('/css/appointment.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/media-style-calendar.css') }}">
 @endsection
 
 @section('content')
@@ -95,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div class="card" style="width: 1200px">
+    <div class="card">
         <div class="card-header d-flex justify-content-between">
             <h5>Agendar Cita</h5>
             <a href="{{ route('main') }}">Regresar</a>

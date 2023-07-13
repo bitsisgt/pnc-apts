@@ -1,46 +1,10 @@
-/* body {
-    background-color: #f2f2f2;
+body {
+    /* background-color: #f2f2f2; */
+    background-color: #0f6dacf0;
+    /* background-color: #083c5fe8; */
     height: 100%;
-} */
-
-body{
-	margin:0;
-	padding:0;
-	font-family:"arial",heletica,sans-serif;
-	/* font-size:12px; */
-    background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
-	-webkit-animation: 10s linear 0s normal none infinite animate;
-	-moz-animation: 10s linear 0s normal none infinite animate;
-	-ms-animation: 10s linear 0s normal none infinite animate;
-	-o-animation: 10s linear 0s normal none infinite animate;
-	animation: 10s linear 0s normal none infinite animate;
-
 }
 
-@-webkit-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
-
-@-moz-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
-
-@-ms-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
-
-@-o-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
-
-@keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
 
 body::-webkit-scrollbar-track
 {
@@ -80,6 +44,11 @@ body::-webkit-scrollbar-thumb
     flex-direction: row;
 }
 
+.log-img-sm {
+    width: 175px;
+    height: 175px;
+}
+
 .header-sticky {
     width: 100%;
     position: fixed;
@@ -108,6 +77,10 @@ body::-webkit-scrollbar-thumb
     margin-bottom: 20px;
 }
 
+.logo-title {
+    font-family: fantasy;
+}
+
 .menu {
     margin-top: 20px;
     display: flex;
@@ -124,6 +97,7 @@ body::-webkit-scrollbar-thumb
     font-size: 20px;
 }
 
+
 .close-button {
     background-color: #ff0000;
     color: #fff;
@@ -133,7 +107,9 @@ body::-webkit-scrollbar-thumb
 }
 
 .logo-sishospi {
-    width: auto;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
 }
 
 .user-image {
@@ -158,6 +134,7 @@ body::-webkit-scrollbar-thumb
     justify-content: center;
     padding-bottom: 7.5rem;    /* Footer height */
     margin-top: 6.5rem;
+    border-radius: 0.25rem;
 }
 
 .menu-section {
@@ -373,6 +350,11 @@ body::-webkit-scrollbar-thumb
         width: 30px;
         height: 30px;
     }
+
+    .main-container {
+        
+        margin-top: 14.5rem;
+    }
 }
 
 
@@ -386,5 +368,10 @@ body::-webkit-scrollbar-thumb
 
     h1 {
         font-size: 28px;
+    }
+
+    .main-container {
+        
+        margin-top: 10.5rem;
     }
 }

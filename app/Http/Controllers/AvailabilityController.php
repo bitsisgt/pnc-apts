@@ -12,4 +12,9 @@ class AvailabilityController extends Controller
         
         return $dataTable->render('maintenance.availability');
     }
+
+    public function create()
+    {
+        return view('availability_form');
+    }
 }

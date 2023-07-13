@@ -33,20 +33,19 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container-cnt">
         <div class="row justify-content-md-center">
             <div class="col-lg-6 button-container">
-                <a href="{{ route('main') }}"  class="btn btn-primary btn-block mb-3">Generar QR</a>
+                <!-- <a href="{{ route('main') }}"  class="btn btn-primary btn-block mb-3">Imprimir</a>  -->
                 <br>
                 <img class="image-qr" src="{{ asset('img/codigo-qr.png') }}" alt="Código QR">
                 <br>
-                <p>Escanéa el carnet</p>
+                <p>Escanéa el carné</p>
             </div>
-           
         </div>
     </div>
+
+    <!-- <div class="container-cnt">
+    </div> -->
 </div>
 @endsection
 

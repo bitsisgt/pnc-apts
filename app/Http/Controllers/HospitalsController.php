@@ -12,4 +12,9 @@ class HospitalsController extends Controller
         
         return $dataTable->render('maintenance.hospitals');
     }
+
+    public function create()
+    {
+        return view('hospital_form');
+    }
 }

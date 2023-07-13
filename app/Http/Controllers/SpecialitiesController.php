@@ -12,4 +12,9 @@ class SpecialitiesController extends Controller
         
         return $dataTable->render('maintenance.specialities');
     }
+
+    public function create()
+    {
+        return view('specialities_form');
+    }
 }

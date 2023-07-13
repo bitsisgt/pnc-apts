@@ -12,4 +12,10 @@ class DoctorsController extends Controller
         
         return $dataTable->render('maintenance.doctors');
     }
+
+    public function create()
+    {
+        return view('doctor_form');
+    }
+
 }

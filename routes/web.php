@@ -15,6 +15,7 @@ use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\AppointmentHistoryController;
 
 use App\Http\Controllers\UserViewController;
+use App\Http\Controllers\ResetPasswordController;
 
 
 /*
@@ -51,10 +52,10 @@ Route::get('patient/user', [ProfileController::class, 'user_patient_profile'])->
 Route::post('patient/profile', [ProfileController::class, 'save'])->name('profile.save');
 Route::post('patient/update', [ProfileController::class, 'update'])->name('profile.update');
 
+// Router maintenance
 Route::get('maintenance/appointment-management', [AppointmentManagementController::class, 'maintenance_appointment_management'])->name('maintenance.appointment_management');
 Route::get('maintenance/availability', [AvailabilityController::class, 'maintenance_availability'])->name('maintenance.availability');
 Route::get('maintenance/appointment-history', [AppointmentHistoryController::class, 'maintenance_appointment_history'])->name('maintenance.appointment_history');
-
 
 Route::get('maintenance/patients', [PatientsController::class, 'maintenance_patients'])->name('maintenance.patients');
 Route::get('maintenance/inquiries-patient', [InquiriesPatientController::class, 'maintenance_inquiries_patients'])->name('maintenance.inquiries_patient');
@@ -65,6 +66,26 @@ Route::get('maintenance/specialities', [SpecialitiesController::class, 'maintena
 
 
 Route::get('user-view', [UserViewController::class, 'user_view'])->name('user_view');
+
+Route::view('/error', 'error')->name('error');
+
+Route::view('/forgot-passwd', 'forgot_passwd')->name('forgot.passwd');
+Route::get('reset-passwd', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-passwd', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+// Routers form
+Route::get('hospital-form', [HospitalsController::class, 'create'])->name('hospital.form');
+Route::get('doctor-form', [DoctorsController::class, 'create'])->name('doctor.form');
+Route::get('specialities-form', [SpecialitiesController::class, 'create'])->name('specialities.form');
+Route::get('appointment-management-form', [AppointmentManagementController::class, 'create'])->name('appointment.management.form');
+Route::get('availability-form', [AvailabilityController::class, 'create'])->name('availability.form');
+Route::get('user-form', [UsersController::class, 'create'])->name('user.form');
+Route::get('patient-form', [PatientsController::class, 'create'])->name('patient.form');
+
+Route::get('appointment/{id}/edit', [AppointmentManagementController::class, 'edit'])->name('appointment.edit');
+Route::put('appointment/{id}', [AppointmentManagementController::class, 'update'])->name('appointment.update');
+
+
 
 // Auth::routes();
 

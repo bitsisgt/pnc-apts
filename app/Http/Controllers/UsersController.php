@@ -11,4 +11,11 @@ class UsersController extends Controller
     {
         return $dataTable->render('maintenance.users');
     }
+
+    public function create()
+    {
+        return view('user_form');
+    }
+
+
 }

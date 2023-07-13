@@ -41,6 +41,9 @@ class PatientsDataTable extends DataTable
      */
     public function html(): HtmlBuilder
     {
+
+        
+
         return $this->builder()
                     ->setTableId('patients-table')
                     ->columns($this->getColumns())
@@ -49,7 +52,7 @@ class PatientsDataTable extends DataTable
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
-                        Button::make('add')->text('Nuevo'),
+                        Button::make('add')->text('Nuevo')->action('window.location.href = "'.route('patient.form').'";'),
                         Button::make('excel'),
                         Button::make('csv'),
                         Button::make('pdf'),

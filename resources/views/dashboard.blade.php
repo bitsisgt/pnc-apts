@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('/css/background.css') }}"> -->
     @yield('css')
 </head>
 
@@ -23,8 +24,8 @@
     <nav class="navbar navbar-expand-lg navbar-light navbar-menu">
         <a class="text-decoration-none d-inline-flex align-items-center" href="{{ route('index') }}">
             <div class="logo-title-container">
-                <img class="logo-sishospi" src="/img/logo-round.png" height="60" class="mr-2" alt="Logo ministerio de gobernación">
-                <h1 class="h3"> SISTEMA DE CONTROL HOSPITALARIO SISHOSPI</h1>
+                <img class="logo-sishospi" src="/img/logo-round-bg.png" height="60" class="mr-2" alt="Logo ministerio de gobernación">
+                <h1 class="h3 logo-title"> SISTEMA DE CONTROL HOSPITALARIO SISHOSPI</h1>
             </div>
         </a>
         <div class="navbar-collapse justify-content-center"></div>
@@ -38,7 +39,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menuDropdown">
                     <a class="dropdown-item" href="#">Ver Perfil</a>
-                    <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+                    <a class="dropdown-item" href="{{ route('forgot.passwd') }}">Cambiar Contraseña</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('signout') }}">Cerrar Sesión</a>
                   </div>
@@ -46,7 +47,7 @@
         </ul>
         @endauth
     </nav>
-    <div class="main-container container">
+    <div class="main-container container ">
         @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" id="success-alert" role="alert">
             {{ session('success') }}
@@ -61,6 +62,7 @@
     </div>
 
     <!-- <footer class="footer text-white btn-outline-light .form-white"> -->
+        
     <footer class="footer text-white .form-white">
         <div class="footer-container">
             <div class="row text-center d-flex justify-content-center">

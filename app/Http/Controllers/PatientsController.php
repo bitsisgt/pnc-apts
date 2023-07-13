@@ -13,4 +13,9 @@ class PatientsController extends Controller
         
         return $dataTable->render('maintenance.patients');
     }
+
+    public function create()
+    {
+        return view('patient_form');
+    }
 }

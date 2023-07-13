@@ -2,12 +2,13 @@
 @section('title', 'Subdirección General De Salud Policial SISAP | Registrar Usuario | Servicio de Citas Médicas')
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/background.css') }}">
 @endsection
 
 @section('content')
     <div class="container register-form bg-light">
         <h3 class="mt-2 text-center">Registro De Un Nuevo Usuario</h3>
-        <hr class="border border-primary border-3">
+        <hr class="border border-warning border-3">
         <p>
             Ingrese sus datos de usuario para entrar al servicio
         </p>
@@ -87,7 +88,7 @@
                         <span class="text-danger">{{ $errors->first('repeat_password') }}</span>
                     @endif
                 </div>
-                <hr class="border border-secondary border-3">
+                <hr class="border border-warning border-3">
                 <div class="form-group group-buttons d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary col-4">Guardar</button>
                     <a href="{{ route('index') }}" class="btn btn-secondary col-4">Regresar</a>

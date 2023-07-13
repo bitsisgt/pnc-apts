@@ -1,10 +1,17 @@
 /* Media Queries patients-dashboard */
+.card-img-top {
+  max-width: 250px;
+  max-height: 250px;
+}
+
 
 /* Estilos generales para dispositivos móviles */
 @media (max-width: 767px) {
     .card {
       width: 100%;
       max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
     }
   
     .card-header {
@@ -24,12 +31,95 @@
     }
   
     .card-deck {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0;
+      margin-right: 0;
     }
   
     .card-img-top {
       margin-left: auto;
       margin-right: auto;
+      max-width: 200px;
+      max-height: 200px;
+    }
+  
+    .card-body {
+      text-align: center;
+    }
+  
+    .card-body > h5,
+    .card-body > p,
+    .card-body > a {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  
+    .card-body > h5 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  
+    .card-body > p {
+      margin-bottom: 15px;
+    }
+  
+    .btn-block {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media (min-width: 576px) {
+
+    .card-deck .card {
+      margin-left: 0;
+    }
+  }
+  
+  
+  /* Estilos para tablets */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .card {
+      width: 100%;
+      max-width: 70%;
+      margin-right: 0px;
+    }
+  
+    .card-header {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .card-header > h5,
+    .card-header > a {
+      flex-basis: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .card-group {
+      display: block;
+    }
+  
+    .card-deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+
+    }
+  
+    .card-img-top {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 200px;
+      max-height: 200px;
     }
   
     .card-body {
@@ -59,29 +149,6 @@
     }
   }
   
-  
-  /* Estilos para tablets */
-  @media (min-width: 768px) and (max-width: 991px) {
-    .card {
-      width: 50%;
-    }
-  
-    .card-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-  
-    .card-deck {
-      width: 100%;
-    }
-
-    .card-img-top {
-        width: 200px;
-        height: 200px;
-    }
-  }
-  
   /* Estilos para tablets en modo apaisado y dispositivos de pantalla grande */
   @media (min-width: 992px) {
     .card {
@@ -96,6 +163,7 @@
   
     .card-deck {
       width: 100%;
+      margin-left: 0px;
     }
 
   }

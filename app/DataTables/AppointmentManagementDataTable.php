@@ -27,7 +27,11 @@ class AppointmentManagementDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'appointment.action')
+            // ->addColumn('action', 'appointment.action')
+            ->addColumn('action', function ($appointment) {
+                // Generar el botón de editar
+                return '<a href="'.route('appointment.edit', $appointment->id).'" class="btn btn-xs btn-primary">Editar</a>';
+            })
             ->setRowId('id');
     }
 
@@ -63,7 +67,7 @@ class AppointmentManagementDataTable extends DataTable
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
-                        Button::make('add')->text('Nuevo'),
+                        Button::make('add')->text('Nuevo')->action('window.location.href = "'.route('appointment.management.form').'";'),
                         Button::make('excel'),
                         Button::make('csv'),
                         Button::make('pdf'),
@@ -81,7 +85,7 @@ class AppointmentManagementDataTable extends DataTable
         return [
             Column::make('id')->title('ID'),
                 //   ->addClass('text-center'),
-            // Column::make('patient_id')->title('ID de Paciente'),
+            Column::make('patient_id')->title('ID de Paciente'),
             Column::make('patient_name')->title('Nombre paciente'),
             // Column::make('doctor_id')->title('ID de Doctor'),
             Column::make('doctor_name')->title('Nombre Doctor'),
@@ -93,6 +97,23 @@ class AppointmentManagementDataTable extends DataTable
             Column::make('start_date')->title('Fecha de Inicio'),
             Column::make('end_date')->title('Fecha de Finalización'),
             Column::make('day_of_week')->title('Día de la Semana'),
+
+            Column::computed('action')
+                ->title('Acción')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center')
+                ->orderable(false)
+                ->searchable(false)
+            //     ->render(function ($appointment) {
+            //         // Verificar si $appointment es un objeto
+            //         if (is_object($appointment) && isset($appointment->id)) {
+            //             // Generar el botón de editar
+            //             return '<a href="'.route('appointment.edit', $appointment->id).'" class="btn btn-xs btn-primary">Editar</a>';
+            //         }
+            //         return '';
+            // }),
         ];
     }
 

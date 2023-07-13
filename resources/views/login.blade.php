@@ -2,12 +2,13 @@
 @section('title', 'Subdirección General De Salud Policial SISAP | Iniciar Sesión | Servicio de Citas Médicas')
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/background.css') }}">
 @endsection
 
 @section('content')
     <div class="container login-form bg-light">
         <h3 class="mt-4 text-center">Iniciar Sesión</h3>
-        <hr class="border border-primary border-3">
+        <hr class="border border-warning border-3">
         <p>
             Ingrese sus datos de usuario para entrar al servicio
         </p>
@@ -42,9 +43,9 @@
                 <a href="{{ route('registration') }}" class="btn btn-secondary mt-3">Crear Nuevo Usuario</a>
             </div>
         </form>
-        <hr class="border border-secondary border-3">
+        <hr class="border border-warning border-3">
         <div class="mt-3">
-            <a href="{{ route('forgot') }}">¿Olvidaste tu contraseña?</a>
+            <a href="{{ route('forgot.passwd') }}">¿Olvidaste tu contraseña?</a>
         </div>
     </div>
 @endsection
